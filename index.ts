@@ -1,10 +1,10 @@
 import express, { Request, Response } from 'express';
 import { validate as uuidValidate } from "uuid";
-import  User from '../classes/user';
-import validarUsuario from '../middlewares/md-user-nome';
-import validarSenha from '../middlewares/md-user-senha';
-import IUser from '../interfaces/userinterface';
-import IRecado from '../interfaces/recadointerface';
+import  User from './classes/user';
+import validarUsuario from './middlewares/md-user-nome';
+import validarSenha from './middlewares/md-user-senha';
+import IUser from './interfaces/userinterface';
+import IRecado from './interfaces/recadointerface';
 import cors from 'cors';
 
 const app = express();
