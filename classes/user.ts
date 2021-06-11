@@ -20,7 +20,13 @@ class User {
           usuario: this.usuario,
           recado: this.recado,             
         };
-    }    
+    }
+    //login
+    verificaSenha(senha: string) {
+      if (senha === senha) {
+        return true
+      }
+    }
     //Recados
     //Adicionar um novo recado
     adicionarRecado(descricao: string, detalhes: string) {

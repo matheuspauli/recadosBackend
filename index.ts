@@ -50,6 +50,23 @@ app.post('/users', validarUsuario, validarSenha,
         data: user,
     });
 });
+// login
+//Procura e retorna usuário e seus recados
+app.post('/login', (req: express.Request, res: express.Response) => {
+    const { usuario, senha }: { usuario?: string, senha?: string } = req.params;        
+    const user = listaDeUsuarios.find((f) => f.usuario === usuario);  
+    if (!user) {
+        return res.status(404).json({
+          msg: "Usuário não encontrado",
+        });
+    }    
+    let senhaOK = user.verificaSenha(senha);
+    if (senhaOK = true)
+      return res.status(200).json({
+        success: true,
+        data: 'Logado'
+    });
+});
 //Procura e retorna usuário e seus recados
 app.get('/users/:id', (req: express.Request, res: express.Response) => {
     const { id }: { id?: string | undefined } = req.params;    
