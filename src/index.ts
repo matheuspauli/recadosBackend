@@ -17,6 +17,15 @@ app.listen(process.env.PORT || 3000, () => {
 // Onde todos os dados serão salvos
 const listaDeUsuarios: Array<User> = [];
 
+app.get("/", (req: express.Request, res: express.Response) => {
+    res.send(`
+    <body style='margin:0;padding:0'>
+        <div style='display: flex;justify-content: center;align-items: center; align-content: center;width:99vw;height:99vh'>
+          <h1 style='font-size:60px;font-weigth:600'>BackEnd Recados</h1>
+        </div>
+    </body>
+    `);
+});
 //Criar usuário
 app.post('/users', validarUsuario, validarSenha,
 (req: express.Request, res: express.Response) => {
