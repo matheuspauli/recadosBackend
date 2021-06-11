@@ -4,7 +4,7 @@ import { v4 as uuid } from "uuid";
 class User {
     public id: string;
     public usuario: string;
-    private senha: string;
+    public senha: string;
     private recado: Array<Recados>;    
 
     constructor(usuario: string, senha: string) {
@@ -25,6 +25,12 @@ class User {
     verificaSenha(senha: string) {
       if (senha === senha) {
         return true
+      }
+    }
+    verificarUsuario(usuario: string){
+      if (usuario !== usuario) {
+        console.log('passou no verificador de senha');
+        return undefined        
       }
     }
     //Recados

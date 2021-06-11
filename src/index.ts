@@ -1,10 +1,10 @@
 import express, { Request, Response } from 'express';
 import { validate as uuidValidate } from "uuid";
-import  User from '../classes/user';
-import validarUsuario from '../middlewares/md-user-nome';
-import validarSenha from '../middlewares/md-user-senha';
-import IUser from '../interfaces/userinterface';
-import IRecado from '../interfaces/recadointerface';
+import  User from './classes/user';
+import validarUsuario from './middlewares/md-user-nome';
+import validarSenha from './middlewares/md-user-senha';
+import IUser from './interfaces/userinterface';
+import IRecado from './interfaces/recadointerface';
 import cors from 'cors';
 
 const app = express();
@@ -49,6 +49,22 @@ app.post('/users', validarUsuario, validarSenha,
         success: true,
         data: user,
     });
+});
+// login
+//Procura e retorna usuário e seus recados
+app.get('/login', (req: express.Request, res: express.Response) => {
+    const { usuario, senha }: { usuario?: string, senha?: any } = req.body;    
+    const user = listaDeUsuarios.find((f) => f.usuario === usuario && f.senha === senha);
+    if (!user) {
+        return res.status(404).json({
+          msg: "Usuário/Senha inválidos",
+        });
+    }
+    return res.status(200).json({
+        success: true,
+        data: 'Logado'
+    });
+    
 });
 //Procura e retorna usuário e seus recados
 app.get('/users/:id', (req: express.Request, res: express.Response) => {
