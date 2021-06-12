@@ -5,7 +5,7 @@ function validarDescrição(req: Request, res: Response, next: NextFunction) {
 
   if (!desc) {
     return res.status(400).json({
-      msg: "A descrição não pode estar em branco",
+      msg: "A descrição não pode estar em branco - MD",
     });
   }
   next();

@@ -34,12 +34,12 @@ app.post('/users', validarUsuario, validarSenha,
     // poderia ter um middleware especifico
     if (existe) {
         return res.status(400).json({
-            msg: 'Nome de Usuário já cadastrado',
+            msg: 'Nome de Usuário já cadastrado --',
         });
     }
     if (senha !== senha2) {        
         return res.status(400).json({
-            msg: 'As senhas não coincidem',
+            msg: 'As senhas não coincidem --',
         });
     }
     const user = new User(usuario, senha);
@@ -57,7 +57,7 @@ app.get('/login', (req: express.Request, res: express.Response) => {
     const user = listaDeUsuarios.find((f) => f.usuario === usuario && f.senha === senha);
     if (!user) {
         return res.status(404).json({
-          msg: "Usuário/Senha inválidos",
+          msg: "Usuário/Senha inválidos --",
         });
     }
     return res.status(200).json({
@@ -71,18 +71,18 @@ app.get('/users/:id', (req: express.Request, res: express.Response) => {
     const { id }: { id?: string | undefined } = req.params;    
     if(!id) {
         return res.status(400).json({
-            msg: "ID deve ser informada",
+            msg: "ID deve ser informada --",
           });
     }
     if (!uuidValidate(id)) {
         return res.status(400).json({
-          msg: "ID inválido",
+          msg: "ID inválido --",
         });
     }
     const user = listaDeUsuarios.find((f) => f.id === id);    
     if (!user) {
         return res.status(404).json({
-          msg: "Usuário não encontrado",
+          msg: "Usuário não encontrado --",
         });
       }    
       return res.status(200).json({
@@ -97,22 +97,22 @@ app.post('/users/:id', (req: express.Request, res: express.Response) => {
     const { descricao, detalhes }: IRecado = req.body;    
     if(!id) {
         return res.status(400).json({
-            msg: "ID deve ser informado",
+            msg: "ID deve ser informado --",
           });
     }
     if (!uuidValidate(id)) {
         return res.status(400).json({
-          msg: "ID inválido",
+          msg: "ID inválido --",
         });
     }
     let achar = listaDeUsuarios.find((f) => f.id === id);
     if (!achar) {
-        return res.status(404).json({msg: 'Usuário não existe'})
+        return res.status(404).json({msg: 'Usuário não existe --'})
     }    
     achar.adicionarRecado(descricao, detalhes);
     listaDeUsuarios.push(achar);
     return res.status(200).json({
-        msg: 'Recado criado com sucesso',    
+        msg: 'Recado criado com sucesso --',    
     });
 });
 //Editar recado
@@ -121,12 +121,12 @@ app.put('/users/:id/recado/:rid', (req: express.Request, res: express.Response) 
     const { descricao, detalhes }: IRecado = req.body;
     if(!id) {
         return res.status(400).json({
-            msg: "ID deve ser informado",
+            msg: "ID deve ser informado --",
           });
     }
     if (!uuidValidate(id)) {
         return res.status(400).json({
-          msg: "ID inválido",
+          msg: "ID inválido --",
         });
     }    
     const achou = listaDeUsuarios.find((f) => f.id === id);    
@@ -140,12 +140,12 @@ app.delete('/users/:id/recado/:rid', (req: express.Request, res: express.Respons
     const { id, rid }: { id?: string, rid?: string } = req.params;   
     if(!id) {
         return res.status(400).json({
-            msg: "ID deve ser informada",
+            msg: "ID deve ser informada --",
           });
     }
     if (!uuidValidate(id)) {
         return res.status(400).json({
-          msg: "ID inválido",
+          msg: "ID inválido --",
         });
     }    
     const achou = listaDeUsuarios.find((f) => f.id === id);    
