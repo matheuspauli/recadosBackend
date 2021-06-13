@@ -52,9 +52,10 @@ app.post('/users', validarUsuario, validarSenha,
 });
 // login
 //Procura e retorna usuário e seus recados
-app.get('/login', (req: express.Request, res: express.Response) => {
-    const { usuario, senha }: { usuario?: string, senha?: any } = req.body;    
+app.post('/login', (req: express.Request, res: express.Response) => {
+    const { usuario, senha }: { usuario?: string, senha?: string } = req.body;    
     const user = listaDeUsuarios.find((f) => f.usuario === usuario && f.senha === senha);
+    console.log(user);
     if (!user) {
         return res.status(404).json({
           msg: "Usuário/Senha inválidos --",
@@ -62,7 +63,7 @@ app.get('/login', (req: express.Request, res: express.Response) => {
     }
     return res.status(200).json({
         success: true,
-        data: 'Logado'
+        data: user.id
     });
     
 });
@@ -112,7 +113,7 @@ app.post('/users/:id', (req: express.Request, res: express.Response) => {
     achar.adicionarRecado(descricao, detalhes);
     listaDeUsuarios.push(achar);
     return res.status(200).json({
-        msg: 'Recado criado com sucesso --',    
+        msg: 'Recado criado com sucesso --',   
     });
 });
 //Editar recado
