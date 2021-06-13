@@ -4,8 +4,8 @@ function criarconta(){
     document.getElementById('login').style.display = 'none';
     document.getElementById('conta').style.display = 'flex';
 }
-//const api = "https://recadosbackend.herokuapp.com";
-const api = "http://localhost:3000";
+const api = "https://recadosbackend.herokuapp.com";
+//const api = "http://localhost:3000";
 window.addEventListener('load', () => {    
     //criarUsuario();
 });
