@@ -5,12 +5,12 @@ function validarSenha(req: Request, res: Response, next: NextFunction) {
 
   if (!senha) {
     return res.status(400).json({
-      msg: "A senha deve ser informada - MD",
+      msg: "A senha deve ser informada",
     });
   }
   if (senha.trim().length < 4) {
     return res.status(400).json({
-      msg: "A senha deve conter ao menos 4 caracteres - MD",
+      msg: "A senha deve conter ao menos 4 caracteres",
     });
   }
 

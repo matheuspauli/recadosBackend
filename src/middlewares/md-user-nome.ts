@@ -5,16 +5,15 @@ function validarUsuario(req: Request, res: Response, next: NextFunction) {
 
   if (!usuario) {
     return res.status(400).json({
-      msg: "Usuário deve ser informado - MD",
+      msg: "Usuário deve ser informado",
     });
   }
 
   if (usuario.trim().length < 3) {
     return res.status(400).json({
-      msg: "Usuário deve conter ao menos 3 caracteres - MD",
+      msg: "Usuário deve conter ao menos 3 caracteres",
     });
   }
-
   next();
 }
 

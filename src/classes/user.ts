@@ -5,20 +5,20 @@ class User {
     public id: string;
     public usuario: string;
     public senha: string;
-    private recado: Array<Recados>;    
+    private recado: Array<Recados>;
 
     constructor(usuario: string, senha: string) {
         this.id = uuid();
         this.usuario = usuario;
         this.senha = senha;
-        this.recado = [];     
+        this.recado = [];
     }
     //Usuários
     exibirUsuario() {
         return {
           id: this.id,
           usuario: this.usuario,
-          recado: this.recado,             
+          recado: this.recado,
         };
     }
     //login
@@ -39,12 +39,12 @@ class User {
         this.recado.push(new Recados(descricao, detalhes));
     }
     //Deletar um recado
-    deletarRecado(id: string) {        
+    deletarRecado(id: string) {
         const indice = this.recado.findIndex(
           (f) => f.id === id
         );
         if (indice === -1) {
-          return console.log('Recado não encontrada');        
+          return console.log('Recado não encontrada');
           }        
         return this.recado.splice(indice, 1);
     }
@@ -53,7 +53,7 @@ class User {
         const editar = this.recado.find((f) => f.id === id);      
         if (editar) {
           editar.descricao = descricao;
-          editar.detalhes = detalhes;          
+          editar.detalhes = detalhes;
         }
         return editar;
     }
